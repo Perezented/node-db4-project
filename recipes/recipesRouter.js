@@ -23,9 +23,14 @@ router.get("/:id", (req, res) => {
         .getShoppingList(req.params.id)
         .then((recipe) => {
             console.log(recipe);
+            res.status(200).json(recipe);
         })
         .catch((err) => {
             console.log(err);
+            res.status(500).json({
+                error: "Could not retrieve the recipe",
+                err,
+            });
         });
 });
 module.exports = router;
