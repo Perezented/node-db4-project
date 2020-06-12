@@ -18,5 +18,14 @@ router.get("/", (req, res) => {
             });
         });
 });
-
+router.get("/:id", (req, res) => {
+    return recipes
+        .getShoppingList(req.params.id)
+        .then((recipe) => {
+            console.log(recipe);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
 module.exports = router;
